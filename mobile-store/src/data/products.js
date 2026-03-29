@@ -4,6 +4,16 @@ const products = [
     name: "iPhone 14",
     brand: "Apple",
     price: 70000,
+    ram: "6GB",
+    storage: "128GB",
+    battery: "6500mAh",
+    display: "6.72 inch FHD+ 120Hz",
+     oldPrice: 17999,
+     discount: "6% off",
+     rating: 4.0,
+    reviews: 35,
+    camera: "high",
+    gaming: "medium",
     image: "/img1.avif"
   },
   {
@@ -11,6 +21,16 @@ const products = [
     name: "Samsung S23",
     brand: "Samsung",
     price: 65000,
+    oldPrice: 17999,
+    discount: "6% off",
+    rating: 4.0,
+    reviews: 35,
+    ram: "6GB",
+    storage: "128GB",
+    battery: "6500mAh",
+    display: "6.72 inch FHD+ 120Hz",
+    camera: "high",
+    gaming: "high",
     image: "/img2.jpg"
   },
   {
@@ -18,8 +38,33 @@ const products = [
     name: "OnePlus 11",
     brand: "OnePlus",
     price: 60000,
+    oldPrice: 17999,
+    discount: "6% off",
+    rating: 4.0,
+    reviews: 35,
+    ram: "6GB",
+    storage: "128GB",
+    battery: "6500mAh",
+    display: "6.72 inch FHD+ 120Hz",
+    camera: "medium",
+    gaming: "high",
     image: "/img3.webp"
-  }
+  },
+  {
+  id: 1,
+  name: "Vivo T4X 5G",
+  brand: "Vivo",
+  price: 16928,
+  oldPrice: 17999,
+  discount: "6% off",
+  rating: 4.0,
+  reviews: 35,
+  image: "/img4.webp",
+  ram: "6GB",
+  storage: "128GB",
+  battery: "6500mAh",
+  display: "6.72 inch FHD+ 120Hz",
+  camera: "50MP"
+}
 ];
-
 export default products;

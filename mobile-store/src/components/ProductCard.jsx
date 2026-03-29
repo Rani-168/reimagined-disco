@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ProductCard({ item }) {
+function ProductCard({ item, addToCompare }) {
   return (
     <div className="bg-white shadow-md rounded-2xl p-4 hover:shadow-xl hover:scale-105 transition duration-300">
       
@@ -19,11 +19,20 @@ function ProductCard({ item }) {
         ₹{item.price}
       </p>
 
+      {/* View Details */}
       <Link to={`/product/${item.id}`}>
         <button className="w-full bg-blue-500 text-white py-2 mt-3 rounded-lg hover:bg-blue-600">
           View Details
         </button>
       </Link>
+
+      {/* ✅ Compare Button */}
+      <button
+        onClick={() => addToCompare(item)}
+        className="w-full bg-yellow-500 text-white py-2 mt-2 rounded-lg hover:bg-yellow-600"
+      >
+        Compare
+      </button>
     </div>
   );
 }

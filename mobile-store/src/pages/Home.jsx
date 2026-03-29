@@ -19,7 +19,7 @@ function Home() {
         </div>
 
         <img
-          src="/banner.png"
+          src="/banner.jpg"
           className="h-40 hidden md:block"
         />
       </div>
