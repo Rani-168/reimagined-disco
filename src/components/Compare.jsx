@@ -9,8 +9,8 @@ function Compare({ list }) {
     <div className="mt-10 overflow-x-auto">
       <h2 className="text-xl font-bold mb-4">📊 Compare Phones</h2>
 
-      <table className="w-full border text-center">
-        <thead>
+      <table className="w-full border text-center rounded-lg overflow-hidden shadow-lg">
+        <thead className="bg-blue-600 text-white">
           <tr>
             <th className="border p-2">Feature</th>
             {list.map((p) => (

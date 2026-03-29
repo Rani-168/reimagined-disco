@@ -17,9 +17,9 @@ function Chatbot() {
     }
 
     // 📸 Camera
-    if (query.includes("camera")) {
-      filtered = filtered.filter((p) => p.camera === "high");
-    }
+   if (query.includes("camera")) {
+  filtered = filtered.filter((p) => p.camera >= 50);
+}
 
     // 🎮 Gaming
     if (query.includes("gaming")) {
@@ -37,11 +37,11 @@ function Chatbot() {
       botText = "❌ No phones found";
     }
 
-    setMessages([
-      ...messages,
-      { type: "user", text: queryText },
-      { type: "bot", text: botText }
-    ]);
+   setMessages((prev) => [
+  ...prev,
+  { type: "user", text: queryText },
+  { type: "bot", text: botText }
+]);
   };
 
   return (
@@ -56,50 +56,49 @@ function Chatbot() {
 
       {/* 💬 Chat Window */}
       {open && (
-        <div className="fixed bottom-20 right-5 w-80 bg-white shadow-xl rounded-xl p-4">
-          
-          {/* Header */}
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="font-bold">🤖 Smart Assistant</h2>
-            <button onClick={() => setOpen(false)}>❌</button>
-          </div>
+        <div className="fixed bottom-20 right-5 w-80 bg-white shadow-2xl rounded-2xl p-4 border border-gray-200">
 
-          {/* Messages */}
-          <div className="h-40 overflow-y-auto mb-2 text-sm">
-            {messages.map((msg, i) => (
-              <p
-                key={i}
-                className={msg.type === "user" ? "text-right" : ""}
-              >
-                {msg.text}
-              </p>
-            ))}
-          </div>
+  {/* Header */}
+  <div className="flex justify-between items-center mb-2 border-b pb-2">
+    <h2 className="font-bold text-blue-600">🤖 Smart AI Assistant</h2>
+    <button onClick={() => setOpen(false)}>❌</button>
+  </div>
 
-          {/* Quick Buttons */}
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => handleQuery("under 30000")}
-              className="bg-gray-200 px-2 py-1 rounded"
-            >
-              Under ₹30K
-            </button>
+  {/* Messages */}
+  <div className="h-52 overflow-y-auto mb-3 space-y-2 text-sm">
+    {messages.map((msg, i) => (
+      <div
+        key={i}
+        className={`p-2 rounded-lg max-w-[80%] ${
+          msg.type === "user"
+            ? "bg-blue-500 text-white ml-auto"
+            : "bg-gray-200"
+        }`}
+      >
+        {msg.text}
+      </div>
+    ))}
+  </div>
 
-            <button
-              onClick={() => handleQuery("best camera")}
-              className="bg-gray-200 px-2 py-1 rounded"
-            >
-              📸 Camera
-            </button>
+  {/* Buttons */}
+  <div className="flex flex-wrap gap-2">
+    <button onClick={() => handleQuery("under 30000")}
+      className="bg-blue-100 px-2 py-1 rounded hover:bg-blue-200">
+      💰 Under ₹30K
+    </button>
 
-            <button
-              onClick={() => handleQuery("gaming phone")}
-              className="bg-gray-200 px-2 py-1 rounded"
-            >
-              🎮 Gaming
-            </button>
-          </div>
-        </div>
+    <button onClick={() => handleQuery("camera")}
+      className="bg-pink-100 px-2 py-1 rounded hover:bg-pink-200">
+      📸 Camera
+    </button>
+
+    <button onClick={() => handleQuery("gaming")}
+      className="bg-purple-100 px-2 py-1 rounded hover:bg-purple-200">
+      🎮 Gaming
+    </button>
+  </div>
+</div>
+        
       )}
     </>
   );

@@ -6,24 +6,35 @@ function Navbar() {
   const { cart } = useContext(CartContext);
 
   return (
-    <div className="bg-blue-600 text-white px-6 py-3 flex justify-between items-center">
-      {/* Logo */}
-      <h1 className="text-2xl font-bold">MobileStore</h1>
+    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 flex justify-between items-center shadow-lg">
 
-      {/* Search Bar */}
-      <input
-        type="text"
-        placeholder="Search for mobiles..."
-        className="w-1/3 p-2 rounded text-black"
-      />
+  <h1 className="text-2xl font-bold tracking-wide">📱 MobileStore</h1>
 
-      {/* Links */}
-      <div className="space-x-6">
-        <Link to="/">Home</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/cart">Cart ({cart.length})</Link>
-      </div>
-    </div>
+  <input
+    type="text"
+    placeholder="Search mobiles..."
+    className="w-1/3 p-2 rounded-lg text-black outline-none focus:ring-2 focus:ring-yellow-400"
+  />
+
+  <div className="space-x-6 font-medium">
+    <Link to="/" className="hover:text-yellow-300">Home</Link>
+    <Link to="/shop" className="hover:text-yellow-300">Shop</Link>
+    <Link to="/walkin" className="hover:text-yellow-300">Walk-in</Link>
+    <Link to="/cart" className="hover:text-yellow-300">
+      🛒 Cart ({cart.length})
+    </Link>
+  </div>
+
+  <button
+    className="bg-red-500 px-3 py-1 rounded hover:bg-red-600"
+    onClick={() => {
+      localStorage.removeItem("user");
+      window.location.reload();
+    }}
+  >
+    Logout
+  </button>
+</div>
   );
 }
 
