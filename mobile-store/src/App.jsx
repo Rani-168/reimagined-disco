@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import Product from "./pages/Product";
+import Cart from "./pages/Cart";
+import Navbar from "./components/Navbar";
 
 function App() {
-  
-
   return (
-   <div>
+    <BrowserRouter>
+      <Navbar />
 
-   </div>
-  )
+      <Routes>
+        <Route path="/" element={<Home />} />     {/* ✅ Home */}
+        <Route path="/shop" element={<Shop />} /> {/* ✅ Shop */}
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
