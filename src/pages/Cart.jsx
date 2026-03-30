@@ -55,20 +55,22 @@ function Cart() {
       </div>
 
       {/* Summary */}
-      <div className="bg-white p-6 rounded-xl shadow">
-        <h2 className="text-xl font-bold mb-4">💳 Summary</h2>
+         <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Cart</h1>
 
-        <p className="flex justify-between">
-          <span>Total</span>
-          <span>₹{total}</span>
-        </p>
+      {cart.map((item, i) => (
+        <div key={i} className="border p-3 mb-2">
+          {item.name} - ₹{item.price}
+        </div>
+      ))}
 
-        <Link to="/checkout">
-          <button className="w-full mt-4 bg-green-500 text-white py-2 rounded hover:bg-green-600">
-            Checkout
-          </button>
-        </Link>
-      </div>
+      <Link
+        to="/checkout"
+        className="bg-green-500 text-white px-4 py-2 rounded"
+      >
+        Checkout
+      </Link>
+    </div>
     </div>
   )}
 </div>

@@ -12,7 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import WalkIn from "./pages/WalkIn";
-
+import Admin from "./pages/Admin";
 
 
 
@@ -25,15 +25,49 @@ function App() {
       <Navbar />
 
       <Routes>
+         <Route path="/login" element={<Login />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/" element={<Home />} />     
         <Route path="/shop" element={<Shop />} /> 
         <Route 
   path="/product/:id" 
   element={<Product cart={cart} setCart={setCart} />} 
 />
-        <Route path="/cart" element={<Cart />} />
-         <Route path="/checkout" element={<Checkout />} />
-         <Route path="/login" element={<Login />} />
+       <Route
+          path="/cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+         
          <Route
   path="/checkout"
   element={
