@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+import { CartContext } from "../context/CartContext";
 
 function Checkout() {
-  const { cart, setCart, reduceStock } = useContext(StoreContext);
+  const { cart, clearCart } = useContext(CartContext);
+  const { reduceStock } = useContext(StoreContext);
 
   const [user, setUser] = useState({
     name: "",
@@ -60,7 +62,7 @@ function Checkout() {
     alert("Order placed successfully ✅");
 
     // Clear cart
-    setCart([]);
+    clearCart();
   };
 
   return (

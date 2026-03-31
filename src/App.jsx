@@ -5,7 +5,6 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Navbar from "./components/Navbar";
 import Chatbot from "./components/Chatbot";
-import { useState } from "react";  
 import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -14,12 +13,7 @@ import Profile from "./pages/Profile";
 import WalkIn from "./pages/WalkIn";
 import Admin from "./pages/Admin";
 
-
-
-
-
 function App() {
-  const [cart, setCart] = useState([]);
   return (
     <BrowserRouter>
       <Navbar />
@@ -44,12 +38,11 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/" element={<Home />} />     
         <Route path="/shop" element={<Shop />} /> 
         <Route 
-  path="/product/:id" 
-  element={<Product cart={cart} setCart={setCart} />} 
-/>
+          path="/product/:id" 
+          element={<Product />} 
+        />
        <Route
           path="/cart"
           element={
@@ -67,15 +60,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-         
-         <Route
-  path="/checkout"
-  element={
-    <ProtectedRoute>
-      <Checkout />
-    </ProtectedRoute>
-  }
-/>
 
 <Route
   path="/orders"

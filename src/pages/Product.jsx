@@ -3,7 +3,7 @@ import products from "../data/products";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
-function Product({ cart, setCart }) {
+function Product() {
   const { id } = useParams();
   const { addToCart } = useContext(CartContext);
   const product = products.find((p) => p.id == id);

@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
 function Home() {
-  const { products, cart, setCart, reduceStock } =
-    useContext(StoreContext);
+  const { products, reduceStock } = useContext(StoreContext);
+  const { cart, addToCart } = useContext(CartContext);
 
   // ✅ Add to Cart
-  const addToCart = (p) => {
+  const handleAddToCart = (p) => {
     if (p.stock <= 0) return alert("Out of stock");
 
-    setCart([...cart, p]);
+    addToCart(p);
     reduceStock(p.id);
   };
 
@@ -51,7 +52,7 @@ function Home() {
           <ProductCard 
             key={p.id} 
             item={p} 
-            addToCart={addToCart}
+            addToCart={handleAddToCart}
             addToCompare={addToCompare}
           />
         ))}

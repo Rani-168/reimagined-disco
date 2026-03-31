@@ -1,13 +1,12 @@
 import { createContext, useEffect, useState } from "react";
+import storeProducts from "../data/storeProducts";
 
 export const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem("products")) || []
+    JSON.parse(localStorage.getItem("products")) || storeProducts
   );
-
-  const [cart, setCart] = useState([]);
 
   // Save to localStorage
   useEffect(() => {
@@ -48,8 +47,6 @@ export const StoreProvider = ({ children }) => {
         deleteProduct,
         updateProduct,
         reduceStock,
-        cart,
-        setCart
       }}
     >
       {children}

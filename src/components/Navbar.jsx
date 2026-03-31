@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { StoreContext } from "../context/StoreContext";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
-  const { cart } = useContext(StoreContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 flex justify-between items-center shadow-lg">

@@ -6,10 +6,11 @@ import { StoreProvider } from "./context/StoreContext";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+   <StoreProvider>
   <CartProvider>
-    <StoreProvider>
     <App />
-  </StoreProvider>
   </CartProvider>
+  </StoreProvider>
+  
   
 );
