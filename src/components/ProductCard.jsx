@@ -8,7 +8,7 @@ function ProductCard({ item, addToCart, addToCompare }) {
       <img
         src={item?.image}
         className="h-40 mx-auto object-contain"
-        alt={item?.name}
+        alt={item?.image}
       />
 
       {/* 📱 Name */}

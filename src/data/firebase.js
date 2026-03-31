@@ -5,6 +5,10 @@ const firebaseConfig = {
   apiKey: "YOUR_KEY",
   authDomain: "YOUR_APP",
   projectId: "YOUR_ID",
+  authDomain: "YOUR_DOMAIN",
+  storageBucket: "YOUR_BUCKET",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
 };
 
 const app = initializeApp(firebaseConfig);

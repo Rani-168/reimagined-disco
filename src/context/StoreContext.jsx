@@ -4,9 +4,10 @@ import storeProducts from "../data/storeProducts";
 export const StoreContext = createContext();
 
 export const StoreProvider = ({ children }) => {
-  const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem("products")) || storeProducts
-  );
+  const [products, setProducts] = useState(() => {
+    const stored = JSON.parse(localStorage.getItem("products"));
+    return Array.isArray(stored) && stored.length > 0 ? stored : storeProducts;
+  });
 
   // Save to localStorage
   useEffect(() => {

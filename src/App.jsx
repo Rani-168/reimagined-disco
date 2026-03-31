@@ -12,6 +12,8 @@ import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import WalkIn from "./pages/WalkIn";
 import Admin from "./pages/Admin";
+import Billing from "./pages/Billing";
+import Invoice from "./pages/Invoice";
 
 function App() {
   return (
@@ -71,6 +73,8 @@ function App() {
 />
 <Route path="/profile" element={<Profile />} />
 <Route path="/walkin" element={<WalkIn />} />
+<Route path="/billing/:id" element={<Billing />} />
+<Route path="/invoice" element={<Invoice />} />
       </Routes>
      
          <Chatbot />
