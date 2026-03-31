@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 import { Link } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
 
 function Home() {
   const { products, cart, setCart, reduceStock } =
     useContext(StoreContext);
 
+  // ✅ Add to Cart
   const addToCart = (p) => {
     if (p.stock <= 0) return alert("Out of stock");
 
@@ -13,38 +15,48 @@ function Home() {
     reduceStock(p.id);
   };
 
+  // ✅ Compare Function
+  const addToCompare = (p) => {
+    alert(`${p.name} added to compare`);
+    console.log("Compare:", p);
+  };
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
 
-      <div className="flex justify-between mb-4">
-        <h1 className="text-2xl font-bold">Store</h1>
+      {/* 🔷 Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-gray-800">Store</h1>
 
-        <div className="flex gap-3">
-          <Link to="/cart">🛒 Cart</Link>
-          <Link to="/admin">⚙️ Admin</Link>
+        <div className="flex gap-4">
+          <Link 
+            to="/cart" 
+            className="bg-yellow-400 px-4 py-2 rounded-full shadow hover:bg-yellow-300 transition"
+          >
+            🛒 Cart ({cart.length})
+          </Link>
+
+          <Link 
+            to="/admin" 
+            className="bg-gray-800 text-white px-4 py-2 rounded-full shadow hover:bg-gray-700 transition"
+          >
+            ⚙️ Admin
+          </Link>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
-        {products.map((p) => (
-          <div key={p.id} className="bg-white p-4 rounded shadow">
-            <h2 className="font-bold">{p.name}</h2>
-            <p>₹{p.price}</p>
-            <p>{p.category}</p>
-
-            <p className="text-green-600">
-              Stock: {p.stock}
-            </p>
-
-            <button
-              onClick={() => addToCart(p)}
-              className="bg-blue-500 text-white px-3 py-1 mt-2 rounded"
-            >
-              Add to Cart
-            </button>
-          </div>
+      {/* 🔥 Products Grid */}
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products?.map((p) => (
+          <ProductCard 
+            key={p.id} 
+            item={p} 
+            addToCart={addToCart}
+            addToCompare={addToCompare}
+          />
         ))}
       </div>
+
     </div>
   );
 }
