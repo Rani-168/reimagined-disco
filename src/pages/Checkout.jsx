@@ -120,6 +120,7 @@ function Checkout() {
           </div>
         </div>
 
+
         {/* BUTTON */}
         <button
           onClick={handleSubmit}

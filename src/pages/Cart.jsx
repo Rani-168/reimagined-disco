@@ -87,6 +87,7 @@ function Cart() {
               ))}
             </div>
 
+
             <div className="h-fit rounded-2xl border-2 border-slate-300 bg-slate-50 p-8 sticky top-6">
               <h2 className="text-2xl font-black text-slate-900 mb-6">Order Summary</h2>
 
