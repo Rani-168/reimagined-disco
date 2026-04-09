@@ -120,8 +120,6 @@ function Checkout() {
           </div>
         </div>
 
-
-        {/* BUTTON */}
         <button
           onClick={handleSubmit}
           className="bg-green-600 text-white w-full py-2 rounded hover:bg-green-700 transition"
