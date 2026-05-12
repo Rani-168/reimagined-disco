@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import products from "../data/products";
 import { useNavigate } from "react-router-dom";
 
 export function WalkIn() {
@@ -33,6 +32,12 @@ export function WalkIn() {
     setName("");
     setPhone("");
     setProduct("");
+  };
+
+  const handleDelete = (id) => {
+    const updated = customers.filter((customer) => customer.id !== id);
+    setCustomers(updated);
+    localStorage.setItem("walkins", JSON.stringify(updated));
   };
 
   return (
@@ -90,16 +95,12 @@ export function WalkIn() {
               onChange={(e) => setPhone(e.target.value)}
               className="rounded-3xl border border-slate-300 bg-slate-50 px-5 py-4 text-slate-900 shadow-sm outline-none transition duration-300 focus:border-sky-400 focus:bg-white"
             />
-            <select
+            <input
+              placeholder="📱 Product Name"
               value={product}
               onChange={(e) => setProduct(e.target.value)}
               className="rounded-3xl border border-slate-300 bg-slate-50 px-5 py-4 text-slate-900 shadow-sm outline-none transition duration-300 focus:border-sky-400 focus:bg-white"
-            >
-              <option value="">📱 Select Product</option>
-              {products.map((p) => (
-                <option key={p.id}>{p.name}</option>
-              ))}
-            </select>
+            />
           </div>
 
           <button
@@ -136,12 +137,20 @@ export function WalkIn() {
                     <p className="text-4xl font-extrabold text-sky-600">#{c.token}</p>
                     <p className="text-sm uppercase tracking-[0.2em] text-slate-400">Token ID</p>
                   </div>
-                  <button
-                    onClick={() => navigate(`/billing/${c.id}`)}
-                    className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-300/30 transition duration-300 hover:from-emerald-600 hover:to-teal-600"
-                  >
-                    Start Billing
-                  </button>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                    <button
+                      onClick={() => navigate(`/billing/${c.id}`)}
+                      className="rounded-3xl bg-gradient-to-r from-sky-600 via-cyan-500 to-emerald-500 py-3 px-6 text-sm font-semibold text-white shadow-[0_18px_40px_-20px_rgba(14,165,233,0.75)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_50px_-20px_rgba(14,165,233,0.85)]"
+                    >
+                      ✨ Start Billing
+                    </button>
+                    <button
+                      onClick={() => handleDelete(c.id)}
+                      className="rounded-3xl bg-gradient-to-r from-red-400 via-rose-500 to-pink-500 py-3 px-6 text-sm font-semibold text-white shadow-[0_18px_40px_-20px_rgba(244,63,94,0.4)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_50px_-20px_rgba(244,63,94,0.55)]"
+                    >
+                      🗑️ Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
