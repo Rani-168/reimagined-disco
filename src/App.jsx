@@ -72,8 +72,8 @@ function App() {
   }
 />
 <Route path="/profile" element={<Profile />} />
-<Route path="/walkin" element={<WalkIn />} />
-<Route path="/billing/:id" element={<Billing />} />
+<Route path="/walkin" element={<ProtectedRoute><WalkIn /></ProtectedRoute>} />
+<Route path="/billing/:id" element={<ProtectedRoute><Billing /></ProtectedRoute>} />
 <Route path="/invoice" element={<Invoice />} />
       </Routes>
      

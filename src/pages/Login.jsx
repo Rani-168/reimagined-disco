@@ -7,6 +7,7 @@ function Login() {
     if (!name) return alert("Enter name");
 
     localStorage.setItem("user", name);
+    localStorage.setItem("authToken", "some-generated-token");
     window.location.href = "/";
   };
 

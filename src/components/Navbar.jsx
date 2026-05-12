@@ -5,6 +5,11 @@ import { CartContext } from "../context/CartContext";
 function Navbar() {
   const { cart } = useContext(CartContext);
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-sky-900 text-white shadow-2xl">
       <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4 lg:gap-6">
@@ -71,10 +76,7 @@ function Navbar() {
 
             <button
               className="inline-flex items-center rounded-full bg-slate-100/15 px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-slate-950/10 transition duration-300 hover:bg-white/20"
-              onClick={() => {
-                localStorage.removeItem("user");
-                window.location.href = "/login";
-              }}
+              onClick={handleLogout}
             >
               Logout
             </button>
